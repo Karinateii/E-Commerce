@@ -1,0 +1,53 @@
+﻿@model BulkyBook.Models.Portfolio
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-primary">Create Portfolio</h2>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name">Name:</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description">Description:</label>
+                    <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ProfilePicturePath">Profile Picture:</label>
+                    <input type="file" id="uploadBox" name="file" class="form-control" />
+                    <span asp-validation-for="ProfilePicturePath" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" onclick="return ValidateInput()" class="btn btn-primary">Create</button>
+                    <a asp-controller="Portfolio" asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Upload a Profile Picture!',
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

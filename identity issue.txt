@@ -1,0 +1,17 @@
+"C:\Program Files\dotnet"
+dotnet tool install -g dotnet-aspnet-codegenerator
+
+In the Edit Environment Variable window, add a new entry at the end of the "Variable value" field, 
+separating it from the previous entry with a semicolon (;). Add the path to the dotnet executable directory:
+
+Copy code
+;C:\Program Files\dotnet\
+
+dotnet aspnet-codegenerator identity -dc ApplicationDbContext --files "Account.Register;Account.Login"
+navigate to project file first
+
+"C:\Program Files\dotnet\dotnet.exe" aspnet-codegenerator identity -dc ApplicationDbContext --files "Account.Register;Account.Login"
+
+"C:\Program Files\dotnet aspnet-codegenerator identity -dc ApplicationDbContext --files "Account.Logout"
+
+ "DefaultConnection": "Server=(LocalDb)\\MSSQLLocalDb; Database=EbenezerDb; Trusted_Connection=True; TrustServerCertificate=True;"
